@@ -1,0 +1,3 @@
+# label:color_rgb:parts:actions
+background:0,0,0::
+License Plate:128,0,0::
