@@ -2,9 +2,9 @@ import cv2
 import os
 
 # กำหนดค่า
-video_path = "C:\\Users\\ASUS\\Desktop\\lpr1.mp4"  # เปลี่ยนเป็นชื่อไฟล์วิดีโอของคุณ
-output_folder = "C:\\Users\\ASUS\\Desktop\\Mini_project_ML\\frames"
-capture_interval = 3  # วินาที
+video_path = "D:\\licence_plate\\video\\04.mp4"  # เปลี่ยนเป็นชื่อไฟล์วิดีโอของคุณ
+output_folder = "D:\\licence_plate\\pic\\video_04"
+capture_interval = 1  # วินาที
 
 # สร้างโฟลเดอร์ถ้ายังไม่มี
 os.makedirs(output_folder, exist_ok=True)
@@ -22,7 +22,7 @@ fps = int(cap.get(cv2.CAP_PROP_FPS))
 frame_interval = capture_interval * fps
 
 frame_count = 0
-image_count = 1
+image_count = 229
 
 while True:
     ret, frame = cap.read()

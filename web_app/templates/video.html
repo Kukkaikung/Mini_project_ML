@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Video</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-center">
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary">License Plate Detection Result</h1>
+        
+        <!-- แสดงวิดีโอที่กำลังสตรีม -->
+        <!-- <img src="{{ url_for('video_feed', video_path=video_path) }}" width="640" class="img-fluid border rounded shadow"> -->
+        <img src="{{ url_for('video_feed', video_path=video_path) }}" style="width: 80%; height: auto;" class="img-fluid border rounded shadow">
+
+        <br><br>
+        
+        <h3 class="mb-4 text-primary">Detected License Plates</h3>
+        
+        <!-- แสดงภาพป้ายทะเบียนที่ตรวจจับได้ -->
+        <div id="thumbnails" class="d-flex justify-content-center">
+            <!-- ป้ายทะเบียนที่ตรวจจับจะมาแสดงที่นี่ -->
+        </div>
+        
+        <br><br>
+        <a href="/" class="btn btn-primary">Upload Another Video</a>
+    </div>
+
+    <script>
+        // ฟังก์ชันสำหรับอัปเดตภาพป้ายทะเบียนที่ตรวจจับได้
+        function updateThumbnails(plateThumbnails) {
+            const thumbnailsContainer = document.getElementById('thumbnails');
+            thumbnailsContainer.innerHTML = ''; // เคลียร์ thumbnails เก่า
+
+            plateThumbnails.forEach(function(base64Image) {
+                const img = document.createElement('img');
+                img.src = 'data:image/jpeg;base64,' + base64Image;
+                img.classList.add('img-thumbnail', 'mx-2');
+                img.style.width = '120px';
+                thumbnailsContainer.appendChild(img);
+            });
+        }
+
+        // รับข้อมูลภาพป้ายทะเบียนจาก server (เรียก API)
+        setInterval(function() {
+            fetch('/get_plate_thumbnails')
+                .then(response => response.json())
+                .then(data => updateThumbnails(data));
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+names:
+  0: License Plate
+path: .
+train: train.txt
