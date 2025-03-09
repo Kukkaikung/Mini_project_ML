@@ -2,7 +2,6 @@
 
 A computer vision application for detecting and recognizing Thai license plates in videos using YOLOv8 and OCR technologies.
 
-![License Plate Detection Demo](https://github.com/yourusername/thai-license-plate-recognition/raw/main/demo/demo_image.jpg)
 
 ## 🌟 Features
 
@@ -148,9 +147,6 @@ thai-license-plate-recognition/
 - Improve OCR accuracy through model fine-tuning
 - Support for real-time processing via webcam
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgements
 
